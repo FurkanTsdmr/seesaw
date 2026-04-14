@@ -1,0 +1,11 @@
+// Selected Dom Elements
+export const leftWeight = document.getElementById("instantWorth");
+export const nextWeight = document.getElementById("nextWorth");
+export const tiltAngle = document.getElementById("angleWorth");
+export const rightWeight = document.getElementById("rightWorth");
+export const plank = document.getElementById("plank");
+export const clickArea = document.getElementById("clickable");
+export const seesawStage = document.getElementById("seesawStage");
+export const resetButton = document.getElementById("resetBtn");
+export const muteBtn = document.getElementById("soundButton");
+export const logsArea = document.getElementById("logs");
