@@ -39,7 +39,7 @@ function getColors(weight) {
 function getObjectSize(weight) {
   const minSize = 28;
   const maxSize = 44;
-  return minSize((weight - 1) / 9) * (maxSize - minSize);
+  return minSize + ((weight - 1) / 9) * (maxSize - minSize);
 }
 // Weight Div Element
 function createObj(weight) {
@@ -47,6 +47,11 @@ function createObj(weight) {
   element.className = "weight-obj";
   element.textContent = `${weight} kg`;
 
+  const size = getObjectSize(weight);
+  element.style.width = `${size} px`;
+  element.style.height = `${size} px`;
+  element.style.backgroundColor = getColors(weight);
+
   return element;
 }
-console.log(createObj());
+console.log(createObj(5));
