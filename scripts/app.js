@@ -54,4 +54,3 @@ function createObj(weight) {
 
   return element;
 }
-console.log(createObj(5));

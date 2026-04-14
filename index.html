@@ -10,42 +10,47 @@
     <!-- Container -->
     <div class="container">
       <!-- Seesaw Boxs -->
-      <div class="contanier-boxs">
-        <div class="container-situation">LEFT WEIGHT</div>
-        <div id="instantWorth" class="container-square">0.0</div>
-      </div>
+      <div class="container-parent">
+            <div class="contanier-boxs">
+            <div class="container-situation">LEFT WEIGHT</div>
+            <div id="instantWorth" class="container-square">0.0</div>
+            </div>
 
-      <div class="contanier-boxs">
-        <div class="container-situation">NEXT WEIGHT</div>
-        <div id="nextWorth" class="container-square">0.0</div>
-      </div>
+            <div class="contanier-boxs">
+            <div class="container-situation">NEXT WEIGHT</div>
+            <div id="nextWorth" class="container-square">0.0</div>
+            </div>
 
-      <div class="contanier-boxs">
-        <div class="container-situation">TILT ANGLE</div>
-        <div id="angleWorth" class="container-square">0.0°</div>
-      </div>
+            <div class="contanier-boxs">
+            <div class="container-situation">TILT ANGLE</div>
+            <div id="angleWorth" class="container-square">0.0°</div>
+            </div>
 
-      <div class="contanier-boxs">
-        <div class="container-situation">RIGHT WEIGHT</div>
-        <div id="rightWorth" class="container-square">0.0</div>
-      </div>
-      <!-- Seesaw  Area-->
+            <div class="contanier-boxs">
+            <div class="container-situation">RIGHT WEIGHT</div>
+            <div id="rightWorth" class="container-square">0.0</div>
+            </div>
+        </div>
+              <!-- Seesaw  Area-->
       <div class="seesaw-area">
         <div class="seesaw-stage" id="seesawStage">
           <div class="seesaw-fulcrum">
-            <div class="seesaw-plank" id="plank">
-              <div id="clickable" class="seesaw-click">Click</div>
-            </div>
+                <div id="seesaw" class="seesaw">
+                    <div id="touch" class="seesaw-click"></div>
+                </div>
           </div>
         </div>
       </div>
-      <!-- Button -->
+            <!-- Button -->
       <div class="container-buttons">
-        <button id="resetBtn">Reset Area</button>
+        <button id="resetBtn">🔄 Reset Seesaw</button>
         <button id="soundButton" aria-pressed="false"></button>
       </div>
       <!--  Worth Area-->
       <div id="logs" class="weight-logs"></div>
+      </div>
+
+
     </div>
     <script src="scripts/app.js" type="module"></script>
   </body>
