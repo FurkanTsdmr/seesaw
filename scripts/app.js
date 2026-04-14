@@ -11,9 +11,11 @@ import {
   logsArea,
 } from "./clickable.js";
 
+import { ANGLE, TORQUE, COLORS } from "./config.js";
 // Objects
-const objects = [];
-let nextWeightValue = Math.floor(Math.random() * 10) + 1;
+let objects = [];
+let nextWeightValue = 1;
+let previewElement = null;
 
 // Random Weight
 function getRandomWeight() {
@@ -28,3 +30,23 @@ function updateNextWeight() {
   }
   return nextWeightValue;
 }
+
+// Colors
+function getColors(weight) {
+  return COLORS[weight - 1] || COLORS[0];
+}
+// Size Weight
+function getObjectSize(weight) {
+  const minSize = 28;
+  const maxSize = 44;
+  return minSize((weight - 1) / 9) * (maxSize - minSize);
+}
+// Weight Div Element
+function createObj(weight) {
+  const element = document.createElement("div");
+  element.className = "weight-obj";
+  element.textContent = `${weight} kg`;
+
+  return element;
+}
+console.log(createObj());

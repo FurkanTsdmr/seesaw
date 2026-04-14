@@ -8,7 +8,10 @@ export const COLORS = [
   "yellow",
   "brown",
   "crimson",
+  "#b39489",
+  "#607D8B",
 ];
 
 //Seesaw Values
 export const ANGLE = 30;
+export const TORQUE = 10;
