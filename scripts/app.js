@@ -9,4 +9,6 @@ import {
   resetButton,
   muteBtn,
   logsArea,
-} from "./clickable";
+} from "./clickable.js";
+// Access Query -> True
+// console.log("Can i access ? ", leftWeight ? "true" : "false");
