@@ -69,17 +69,6 @@ function placeObj(element, side, distance) {
 // min and max values
 const limits = (v, min, max) => Math.min(max, Math.max(min, v));
 
-// Calculate the total weight
-const total = () => {
-  let left = 0;
-  let right = 0;
-  for (const obj of objects) {
-    if (obj.side === "left") left += obj.objeDrop;
-    else right += obj.objeDrop;
-  }
-  return { left, right };
-};
-
 // Get click position relative to plank center
 function getClickInfo(event) {
   const rect = seesawStage.getBoundingClientRect();
