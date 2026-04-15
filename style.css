@@ -184,3 +184,182 @@ body {
   font-weight: bold;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+/* Responsive */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .container-parent {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .container-parent .contanier-boxs {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .container-square {
+    font-size: 1rem;
+  }
+
+  .seesaw-area {
+    height: 250px;
+  }
+
+  .seesaw-area .seesaw {
+    width: 400px;
+    height: 18px;
+  }
+
+  .seesaw-fulcrum {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #5a3e1b;
+    margin-bottom: 50px;
+  }
+
+  .container-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .container-buttons button,
+  #resetBtn,
+  #soundButton {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .weight-logs {
+    height: 130px;
+    font-size: 0.85rem;
+  }
+
+  .weight-obj {
+    font-size: 0.75rem;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+    margin: 8px;
+  }
+
+  .container-parent .contanier-boxs {
+    padding: 8px;
+  }
+
+  .container-parent .contanier-boxs .container-situation {
+    font-size: 0.85rem;
+  }
+
+  .container-square {
+    font-size: 0.9rem;
+    margin-top: 6px;
+  }
+
+  .seesaw-area {
+    height: 220px;
+  }
+
+  .seesaw-area .seesaw {
+    width: 320px;
+    height: 16px;
+  }
+
+  .seesaw-fulcrum {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #5a3e1b;
+    margin-bottom: 40px;
+  }
+
+  .container-buttons button,
+  #resetBtn,
+  #soundButton {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .container-buttons button {
+    margin: 0 3px;
+  }
+
+  .weight-logs {
+    height: 120px;
+    font-size: 0.75rem;
+  }
+
+  .weight-logs .log {
+    padding: 4px;
+    margin: 3px 0;
+  }
+
+  .weight-obj {
+    font-size: 0.7rem;
+    padding-top: 4px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .seesaw-area {
+    height: 200px;
+  }
+
+  .seesaw-area .seesaw {
+    width: 280px;
+    height: 14px;
+  }
+
+  .seesaw-fulcrum {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 25px solid #5a3e1b;
+    margin-bottom: 35px;
+  }
+
+  .container-buttons {
+    gap: 6px;
+  }
+
+  .container-buttons button,
+  #resetBtn,
+  #soundButton {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .weight-logs {
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .seesaw-area {
+    height: 180px;
+  }
+
+  .container-parent {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .container-parent .contanier-boxs {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .weight-logs {
+    height: 100px;
+  }
+}
