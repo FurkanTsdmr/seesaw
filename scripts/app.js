@@ -109,3 +109,22 @@ function getTorques() {
   }
   return { leftTorque, rightTorque };
 }
+
+// Calculate angle from torques
+function calculateAngle(leftTorque, rightTorque) {
+  const raw = (rightTorque - leftTorque) / TORQUE;
+  return limits(raw, -ANGLE, ANGLE);
+}
+// Update UI displays
+function updateUI(angle) {
+  const { leftTotal, rightTotal } = getTotalWeights();
+  if (leftWeight) leftWeight.textContent = leftTotal;
+  if (rightWeight) rightWeight.textContent = rightTotal;
+  if (tiltAngle) tiltAngle.textContent = `${angle.toFixed(1)}°`;
+}
+
+// Rotate plank
+function rotatePlank(angle) {
+  if (plank)
+    plank.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+}
