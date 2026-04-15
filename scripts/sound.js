@@ -12,3 +12,12 @@ const updateButton = (muteBtn) => {
   muteBtn.setAttribute("aria-pressed", String(isMuted));
   muteBtn.textContent = isMuted ? "Sound:Off" : "Sound:On";
 };
+
+//Users not mute play sound if its not mute
+export const playObj = () => {
+  if (isMuted) return;
+  try {
+    soundWater.currentTime = 0;
+    soundWater.play();
+  } catch {}
+};
