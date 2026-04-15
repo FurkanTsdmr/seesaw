@@ -21,3 +21,13 @@ export const playObj = () => {
     soundWater.play();
   } catch {}
 };
+
+//Mute button event
+export const muteSoundCheck = (muteBtn) => {
+  muteBtn.addEventListener("click", () => {
+    isMuted = !isMuted;
+    localStorage.setItem(SOUND, isMuted ? "1" : "0");
+    updateButton(muteBtn);
+  });
+  updateButton;
+};
