@@ -128,3 +128,60 @@ function rotatePlank(angle) {
   if (plank)
     plank.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
 }
+// Add log entry
+function addLog(weight, side, distancePx) {
+  if (!logsArea) return;
+  const logEntry = document.createElement("div");
+  logEntry.className = "log";
+  logEntry.textContent = `📦 ${weight}kg → ${side} side, ${distancePx}px`;
+  logsArea.prepend(logEntry);
+}
+// Show preview on hover
+function showPreview(event) {
+  const { side, distancePx } = getClickInfo(event, plank);
+  if (!previewElement) {
+    previewElement = createObj(nextWeightValue);
+    previewElement.classList.add("preview");
+    clickArea.appendChild(previewElement);
+  }
+  placeObj(previewElement, side, distancePx);
+}
+
+function hidePreview() {
+  if (previewElement) {
+    previewElement.remove();
+    previewElement = null;
+  }
+}
+// console.log(showPreview());
+// Main click handler
+function handleClick(event) {
+  const weight = nextWeightValue;
+  const { side, distancePx } = getClickInfo(event, plank);
+
+  // Save to array
+  objects.push({ weight, side, distancePx });
+
+  // Create and place object
+  const obj = createObj(weight);
+  placeObj(obj, side, distancePx);
+  obj.style.top = "-100px";
+  clickArea.appendChild(obj);
+
+  // Animate
+  requestAnimationFrame(() => {
+    obj.style.top = "-20px";
+  });
+
+  // Add log
+  addLog(weight, side, distancePx);
+
+  // Calculate and update
+  const { leftTorque, rightTorque } = getTorques();
+  const angle = calculateAngle(leftTorque, rightTorque);
+  updateUI(angle);
+  rotatePlank(angle);
+
+  // Next weight
+  updateNextWeight();
+}
