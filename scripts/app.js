@@ -86,3 +86,26 @@ function getClickInfo(event, touchElement) {
   const distancePx = Math.min(Math.round(Math.abs(diffX)), Math.round(half));
   return { side, distancePx };
 }
+
+// Calculate total weight per side
+function getTotalWeights() {
+  let leftTotal = 0;
+  let rightTotal = 0;
+  for (const obj of objects) {
+    if (obj.side === "left") leftTotal += obj.weight;
+    else rightTotal += obj.weight;
+  }
+  return { leftTotal, rightTotal };
+}
+
+// Calculate torque per side (torque = weight × distance)
+function getTorques() {
+  let leftTorque = 0;
+  let rightTorque = 0;
+  for (const obj of objects) {
+    const torque = obj.weight * obj.distancePx;
+    if (obj.side === "left") leftTorque += torque;
+    else rightTorque += torque;
+  }
+  return { leftTorque, rightTorque };
+}
