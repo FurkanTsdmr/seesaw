@@ -12,6 +12,7 @@ import {
 } from "./clickable.js";
 
 import { ANGLE, TORQUE, COLORS } from "./config.js";
+import { playObj, muteSoundCheck } from "./sound.js";
 // Objects
 let objects = [];
 let nextWeightValue = 1;
@@ -166,6 +167,7 @@ function hidePreview() {
 // console.log(showPreview());
 // Main click handler
 function handleClick(event) {
+  playObj();
   hidePreview();
   const weight = nextWeightValue;
   const { side, distancePx } = getClickInfo(event);
@@ -178,12 +180,10 @@ function handleClick(event) {
   placeObj(obj, side, distancePx);
   obj.style.top = "-100px";
   clickArea.appendChild(obj);
-
   // Animate
   requestAnimationFrame(() => {
     obj.style.top = "-20px";
   });
-
   // Add log
   addLog(weight, side, distancePx);
 
@@ -220,3 +220,6 @@ resetButton.addEventListener("click", resetAll);
 updateNextWeight();
 updateUI(0);
 rotatePlank(0);
+if (muteBtn) {
+  muteSoundCheck(muteBtn);
+}

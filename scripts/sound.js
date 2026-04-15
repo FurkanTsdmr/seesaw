@@ -29,5 +29,5 @@ export const muteSoundCheck = (muteBtn) => {
     localStorage.setItem(SOUND, isMuted ? "1" : "0");
     updateButton(muteBtn);
   });
-  updateButton;
+  updateButton(muteBtn);
 };
