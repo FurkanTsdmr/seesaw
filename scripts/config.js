@@ -11,7 +11,7 @@ export const COLORS = [
   "#b39489",
   "#607D8B",
 ];
-
+export const SOUND = "sound";
 //Seesaw Values
 export const ANGLE = 30;
 export const TORQUE = 10;
