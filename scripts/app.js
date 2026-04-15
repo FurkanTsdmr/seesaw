@@ -54,3 +54,35 @@ function createObj(weight) {
 
   return element;
 }
+
+// Position element on  screen
+function placeObj(element, side, distance) {
+  const offset = side === "left" ? -distance : distance;
+  element.style.left = "50%";
+  element.style.transform = `translateX(calc(-50% + ${offset}px))`;
+}
+
+// min and max values
+const limits = (v, min, max) => Math.min(max, Math.max(min, v));
+
+// Calculate the total weight
+const total = () => {
+  let left = 0;
+  let right = 0;
+  for (const obj of state.objects) {
+    if (obj.side === "left") left += obj.objeDrop;
+    else right += obj.objeDrop;
+  }
+  return { left, right };
+};
+
+// Get click position relative to plank center
+function getClickInfo(event, touchElement) {
+  const rect = touchElement.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const diffX = event.clientX - centerX;
+  const side = diffX < 0 ? "left" : "right";
+  const half = rect.width / 2;
+  const distancePx = Math.min(Math.round(Math.abs(diffX)), Math.round(half));
+  return { side, distancePx };
+}
