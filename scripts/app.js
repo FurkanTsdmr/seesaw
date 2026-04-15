@@ -45,11 +45,11 @@ function getObjectSize(weight) {
 function createObj(weight) {
   const element = document.createElement("div");
   element.className = "weight-obj";
-  element.textContent = `${weight} kg`;
+  element.textContent = `${weight}kg`;
 
   const size = getObjectSize(weight);
-  element.style.width = `${size} px`;
-  element.style.height = `${size} px`;
+  element.style.width = `${size}px`;
+  element.style.height = `${size}px`;
   element.style.backgroundColor = getColors(weight);
 
   return element;
@@ -58,6 +58,9 @@ function createObj(weight) {
 // Position element on  screen
 function placeObj(element, side, distance) {
   const offset = side === "left" ? -distance : distance;
+  element.style.position = "absolute";
+  element.style.top = "-20px";
+  element.style.marginBottom = "-30px";
   element.style.left = "50%";
   element.style.transform = `translateX(calc(-50% + ${offset}px))`;
 }
@@ -69,7 +72,7 @@ const limits = (v, min, max) => Math.min(max, Math.max(min, v));
 const total = () => {
   let left = 0;
   let right = 0;
-  for (const obj of state.objects) {
+  for (const obj of objects) {
     if (obj.side === "left") left += obj.objeDrop;
     else right += obj.objeDrop;
   }
@@ -77,12 +80,13 @@ const total = () => {
 };
 
 // Get click position relative to plank center
-function getClickInfo(event, touchElement) {
-  const rect = touchElement.getBoundingClientRect();
+function getClickInfo(event) {
+  const rect = seesawStage.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const diffX = event.clientX - centerX;
   const side = diffX < 0 ? "left" : "right";
-  const half = rect.width / 2;
+  const plankRect = plank.getBoundingClientRect();
+  const half = plankRect.width / 2;
   const distancePx = Math.min(Math.round(Math.abs(diffX)), Math.round(half));
   return { side, distancePx };
 }
@@ -138,12 +142,18 @@ function addLog(weight, side, distancePx) {
 }
 // Show preview on hover
 function showPreview(event) {
-  const { side, distancePx } = getClickInfo(event, plank);
+  const { side, distancePx } = getClickInfo(event);
   if (!previewElement) {
     previewElement = createObj(nextWeightValue);
     previewElement.classList.add("preview");
     clickArea.appendChild(previewElement);
   }
+  previewElement.textContent = `${nextWeightValue}kg`;
+  const size = getObjectSize(nextWeightValue);
+  previewElement.style.width = `${size}px`;
+  previewElement.style.height = `${size}px`;
+  previewElement.style.backgroundColor = getColors(nextWeightValue);
+  previewElement.style.top = "-20px";
   placeObj(previewElement, side, distancePx);
 }
 
@@ -156,8 +166,9 @@ function hidePreview() {
 // console.log(showPreview());
 // Main click handler
 function handleClick(event) {
+  hidePreview();
   const weight = nextWeightValue;
-  const { side, distancePx } = getClickInfo(event, plank);
+  const { side, distancePx } = getClickInfo(event);
 
   // Save to array
   objects.push({ weight, side, distancePx });
