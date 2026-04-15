@@ -185,3 +185,27 @@ function handleClick(event) {
   // Next weight
   updateNextWeight();
 }
+// Reset everything
+function resetAll() {
+  objects = [];
+  if (clickArea) {
+    const allObjects = clickArea.querySelectorAll(".weight-obj");
+    allObjects.forEach((obj) => obj.remove());
+  }
+  if (logsArea) logsArea.innerHTML = "";
+  updateUI(0);
+  rotatePlank(0);
+  updateNextWeight();
+}
+
+// Event listeners
+clickArea.addEventListener("click", handleClick);
+clickArea.addEventListener("mouseenter", showPreview);
+clickArea.addEventListener("mousemove", showPreview);
+clickArea.addEventListener("mouseleave", hidePreview);
+resetButton.addEventListener("click", resetAll);
+
+// Initialize
+updateNextWeight();
+updateUI(0);
+rotatePlank(0);
