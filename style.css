@@ -103,13 +103,54 @@ body {
 }
 
 /* Buttons Styles */
-#resetBtn {
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+.container-buttons {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.4);
+}
+
+.container-buttons button,
+#resetBtn,
+#soundButton {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px outset rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(16px);
-  color: #2c3e50;
-  border-radius: 20px;
-  padding: 3px;
-  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  color: #1e2f3e;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.container-buttons button {
+  padding: 8px 18px;
+  margin: 0 6px;
+  font-size: 0.9rem;
+}
+
+#resetBtn,
+#soundButton {
+  padding: 10px 22px;
+  font-size: 1rem;
+}
+
+.container-buttons button:hover,
+#resetBtn:hover,
+#soundButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.container-buttons button:active,
+#resetBtn:active,
+#soundButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
