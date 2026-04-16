@@ -68,7 +68,9 @@ function placeObj(element, side, distance) {
 }
 
 // min and max values
-const limits = (v, min, max) => Math.min(max, Math.max(min, v));
+function limits(v, min, max) {
+  return Math.min(max, Math.max(min, v));
+}
 
 // Get click position relative to plank center
 function getClickInfo(event) {
@@ -236,3 +238,4 @@ function init() {
     updateNextWeight();
   }
 }
+init();
