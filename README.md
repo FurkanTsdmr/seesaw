@@ -1,4 +1,4 @@
-﻿Seesaw Simulation
+﻿#Seesaw Simulation
 A visual seesaw simulation built with pure JavaScript, HTML, and CSS.
 Demo <br/>
 Live Demo <br/>
