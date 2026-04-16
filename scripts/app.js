@@ -13,6 +13,7 @@ import {
 
 import { ANGLE, TORQUE, COLORS } from "./config.js";
 import { playObj, muteSoundCheck } from "./sound.js";
+import { saveState, loadState, clearState } from "./localStorage.js";
 // Objects
 let objects = [];
 let nextWeightValue = 1;
@@ -184,6 +185,7 @@ function handleClick(event) {
 
   // Next weight
   updateNextWeight();
+  saveState(objects, nextWeightValue);
 }
 // Reset everything
 function resetAll() {
@@ -196,6 +198,7 @@ function resetAll() {
   updateUI(0);
   rotatePlank(0);
   updateNextWeight();
+  clearState();
 }
 
 // Event listeners
@@ -206,9 +209,30 @@ clickArea.addEventListener("mouseleave", hidePreview);
 resetButton.addEventListener("click", resetAll);
 
 // Initialize
-updateNextWeight();
-updateUI(0);
-rotatePlank(0);
 if (muteBtn) {
   muteSoundCheck(muteBtn);
+}
+
+function init() {
+  const saved = loadState();
+  if (saved) {
+    objects = saved.objects || [];
+    nextWeightValue = saved.nextWeightValue || getRandomWeight();
+    if (nextWeight) nextWeight.textContent = `${nextWeightValue} kg`;
+
+    objects.forEach(({ weight, side, distancePx }) => {
+      const el = createObj(weight);
+      placeObj(el, side, distancePx);
+      clickArea.appendChild(el);
+    });
+
+    const { leftTorque, rightTorque } = getTorques();
+    const angle = calculateAngle(leftTorque, rightTorque);
+    updateUI(angle);
+    rotatePlank(angle);
+  } else {
+    updateUI(0);
+    rotatePlank(0);
+    updateNextWeight();
+  }
 }

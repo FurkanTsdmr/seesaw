@@ -15,3 +15,4 @@ export const SOUND = "sound";
 //Seesaw Values
 export const ANGLE = 30;
 export const TORQUE = 10;
+export const STORAGE_KEY = "seesawState";
