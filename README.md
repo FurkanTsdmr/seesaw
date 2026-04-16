@@ -20,7 +20,7 @@ The project is split into focused modules:
 app.js — core logic, events, simulation
 clickable.js — DOM element references
 config.js — constants (colors, angle cap, torque normalization)
-storage.js — localStorage read/write
+localStorage.js — localStorage read/write
 sound.js — mute toggle and drop sound
 
 Object Positioning
